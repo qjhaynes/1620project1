@@ -3,19 +3,31 @@ from gui import *
 
 
 class Logic(QMainWindow, Ui_MainWindow):
-    def __init__(self):
+    """
+    A class that defines what happens when the graphical user interface is interacted with.
+    """
+    def __init__(self) -> None:
+        """
+        Method to initialize  the Logic class.
+        """
         super().__init__()
         self.setupUi(self)
 
         self.button_submit.clicked.connect(lambda: self.submit())
 
-    def submit(self):
+    def submit(self) -> None:
+        """
+        Method for deciding what the submit button does based on the menu the gui has open.
+        """
         if self.label_menu.text() == 'VOTE MENU':
             self.vote()
-        elif self.label_menu.text() == 'CANDIDATE MENU':
+        else:
             self.cast_vote()
 
-    def vote(self):
+    def vote(self) -> None:
+        """
+        Method to decide whether the menu will change to the voting ballot or exit to show the results of the vote.
+        """
         try:
             option = self.input_option.text().strip().lower()
             if option != 'v' and option != 'x':
@@ -34,7 +46,10 @@ class Logic(QMainWindow, Ui_MainWindow):
         finally:
             self.input_option.clear()
 
-    def cast_vote(self):
+    def cast_vote(self) -> None:
+        """
+        Method to decide which candidate to vote for. It then records this vote in a text file.
+        """
         try:
             candidate = int(self.input_option.text())
             if candidate != 1 and candidate != 2:
@@ -55,7 +70,10 @@ class Logic(QMainWindow, Ui_MainWindow):
         finally:
             self.input_option.clear()
 
-    def display_results(self):
+    def display_results(self) -> None:
+        """
+        Method to read the results from the text file generated, then display them in the gui.
+        """
         john_votes = 0
         jane_votes = 0
         total_votes = 0

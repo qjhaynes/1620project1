@@ -10,7 +10,11 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
+    """
+    A class for setting up the graphical user interface using PyQt6. Translated from the PyQt6 application into
+    a python file.
+    """
+    def setupUi(self, MainWindow) -> None:
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(250, 250)
         MainWindow.setMinimumSize(QtCore.QSize(250, 250))
@@ -64,7 +68,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, MainWindow) -> None:
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Ballot"))
         self.button_submit.setText(_translate("MainWindow", "SUBMIT"))
